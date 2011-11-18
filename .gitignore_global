@@ -1,0 +1,14 @@
+# A global ignore file for GIT
+#
+# Michael Aguiar <http://www.michaelaguiar.com>
+#
+# Just execute: git config --global core.excludesfile FILELOCATION
+
+# OS
+Thumbs.db
+*.DS_Store
+
+# Xcode
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
