@@ -12,3 +12,6 @@ Thumbs.db
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
+
+# Espresso
+*.esproj/
