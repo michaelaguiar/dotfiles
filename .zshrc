@@ -57,6 +57,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-
-### Added by the Heroku Toolbelt
-export PATH="$PATH:/opt/boxen/env.sh"
