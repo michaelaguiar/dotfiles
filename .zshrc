@@ -55,5 +55,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:$HOME/.composer/vendor/bin:$PATH
