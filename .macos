@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+# Close any open System Preferences panes
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "Ghost"
+sudo scutil --set HostName "Ghost"
+sudo scutil --set LocalHostName "Ghost"
+
+###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+# Enable Dark Mode
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+# Disable automatic light / dark mode switching
+defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
+
+###############################################################################
+# Software Update                                                             #
+###############################################################################
+
+# Automatically Check for updates
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
+
+# Automatically Download new updates when available
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
+
+# Automatically Install macOS updates
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
+
+# Automatically Install app updates from the App Store
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutoUpdate -bool true
+
+# Automatically Install configuration data
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist ConfigDataInstall -bool true
+
+# Automatically Install system data files and security updates
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist CriticalUpdateInstall -bool true
