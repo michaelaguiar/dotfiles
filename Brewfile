@@ -5,6 +5,7 @@ tap 'homebrew/cask'
 brew 'awscli'
 brew 'gh'
 brew 'git'
+brew 'node'
 brew 'mas'
 brew 'stripe/stripe-cli/stripe'
 
