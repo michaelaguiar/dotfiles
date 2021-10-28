@@ -19,16 +19,6 @@ sudo scutil --set HostName "Ghost"
 sudo scutil --set LocalHostName "Ghost"
 
 ###############################################################################
-# Screen                                                                      #
-###############################################################################
-
-# Enable Dark Mode
-defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
-
-# Disable automatic light / dark mode switching
-defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
-
-###############################################################################
 # Software Update                                                             #
 ###############################################################################
 
