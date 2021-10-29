@@ -52,10 +52,24 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock mru-spaces -bool false
 
 ###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Desktop > Show View Options > Stack By: Kind
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:GroupBy Kind" ~/Library/Preferences/com.apple.finder.plist
+
+# Desktop > Show View Options > Sort By: Name
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+
+# Finder > Show View Options > Sort By: Name
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Dock"; do
+for app in "Dock" "Finder"; do
+	echo "Killing ${app}"
 	killall "${app}" &> /dev/null
 done
 
