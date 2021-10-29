@@ -22,20 +22,41 @@ sudo scutil --set LocalHostName "Ghost"
 # Software Update                                                             #
 ###############################################################################
 
-# Automatically Check for updates
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticCheckEnabled -bool true
+# System Preferences > Software Update > Advanced > Automatically: Check for updates
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-# Automatically Download new updates when available
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticDownload -bool true
+# System Preferences > Software Update > Advanced > Automatically: Download new updates when available
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticDownload -bool true
 
-# Automatically Install macOS updates
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutomaticallyInstallMacOSUpdates -bool true
+# System Preferences > Software Update > Advanced > Automatically: Install macOS updates
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticallyInstallMacOSUpdates -bool true
 
-# Automatically Install app updates from the App Store
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist AutoUpdate -bool true
+# System Preferences > Software Update > Advanced > Automatically: Install app updates from the App Store
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutoUpdate -bool true
 
-# Automatically Install configuration data
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist ConfigDataInstall -bool true
+# System Preferences > Software Update > Advanced > Automatically: Install system data files and security updates
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
-# Automatically Install system data files and security updates
-sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist CriticalUpdateInstall -bool true
+###############################################################################
+# Dock & Menu Bar                                                             #
+###############################################################################
+
+# System Preferences > Dock & Menu Bar > Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+###############################################################################
+# Mission Control                                                             #
+###############################################################################
+
+# System Preference > Mission Control > Automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+for app in "Dock"; do
+	killall "${app}" &> /dev/null
+done
+
+echo "Done. Note that some of these changes require a logout/restart to take effect."
