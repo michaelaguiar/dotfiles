@@ -31,3 +31,6 @@ ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
 
 # Set macOS preferences - we will run this last because this will reload the shell
 source .macos
+source ssh.sh
+
+echo "Setup complete!"

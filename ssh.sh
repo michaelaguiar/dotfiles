@@ -14,4 +14,5 @@ echo "Host *\n AddKeysToAgent yes\n UseKeychain yes\n IdentityFile ~/.ssh/id_ed2
 ssh-add -K ~/.ssh/id_ed25519
 
 # Adding your SSH key to your GitHub account
-echo "run 'pbcopy < ~/.ssh/id_ed25519.pub' and paste that into GitHub"
+echo "Adding SSH key to GitHub..."
+gh ssh-key add ~/.ssh/id_ed25519.pub
