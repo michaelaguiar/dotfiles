@@ -7,7 +7,6 @@ brew 'gh'
 brew 'git'
 brew 'node'
 brew 'mas'
-brew 'stripe/stripe-cli/stripe'
 
 # Apps
 cask 'nova'
