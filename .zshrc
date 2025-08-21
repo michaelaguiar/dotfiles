@@ -20,7 +20,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Alias
-alias ic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 alias brewup='brew update && brew upgrade && brew cleanup'
 
 # Customize to your needs...

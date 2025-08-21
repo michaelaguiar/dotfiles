@@ -1,6 +1,3 @@
-# Taps
-#tap 'homebrew/cask'
-
 # Binaries
 brew 'awscli'
 cask 'google-cloud-sdk'
