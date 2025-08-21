@@ -5,6 +5,7 @@ tap 'homebrew/cask'
 brew 'awscli'
 cask 'google-cloud-sdk'
 brew 'git'
+brew 'gh'
 brew 'node'
 brew 'mas'
 
