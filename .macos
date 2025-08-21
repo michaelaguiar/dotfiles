@@ -14,9 +14,11 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Ghost"
-sudo scutil --set HostName "Ghost"
-sudo scutil --set LocalHostName "Ghost"
+# Use environment variable HOSTNAME, fallback to "Ghost" if not set
+COMPUTER_NAME=${HOSTNAME:-"Ghost"}
+sudo scutil --set ComputerName "$COMPUTER_NAME"
+sudo scutil --set HostName "$COMPUTER_NAME"
+sudo scutil --set LocalHostName "$COMPUTER_NAME"
 
 ###############################################################################
 # Software Update                                                             #
@@ -63,6 +65,35 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Finder > Show View Options > Sort By: Name
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy name" ~/Library/Preferences/com.apple.finder.plist
+
+###############################################################################
+# Security & Privacy                                                          #
+###############################################################################
+
+# Enable FileVault (full disk encryption)
+sudo fdesetup enable -user "$USER" || echo "FileVault may already be enabled or requires manual setup"
+
+# Enable the built-in firewall
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+# Enable stealth mode (don't respond to ICMP ping requests or connection attempts from closed TCP and UDP ports)
+sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -bool true
+
+# Disable automatic login
+sudo defaults delete /Library/Preferences/com.apple.loginwindow autoLoginUser 2>/dev/null || echo "Auto login already disabled"
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Disable guest account
+sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false
+
+# Disable remote login (SSH)
+sudo systemsetup -setremotelogin off
+
+# Disable remote management
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -stop
 
 ###############################################################################
 # Kill affected applications                                                  #

@@ -1,5 +1,5 @@
 # Taps
-tap 'homebrew/cask'
+#tap 'homebrew/cask'
 
 # Binaries
 brew 'awscli'
@@ -14,8 +14,7 @@ cask 'zed'
 cask 'sketch'
 cask 'tableplus'
 cask 'google-chrome'
-cask 'docker'
-
+cask 'container'
 
 # Mac App Store
 mas "Xcode", id: 497799835
