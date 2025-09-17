@@ -2,6 +2,10 @@
 
 echo "Setting up your Mac..."
 
+# Prompt for email
+read -p "Enter your email: " EMAIL
+export EMAIL
+
 # Prompt for hostname
 read -p "Enter hostname for this Mac: " HOSTNAME
 export HOSTNAME

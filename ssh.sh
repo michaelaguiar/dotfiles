@@ -3,7 +3,7 @@
 echo "Generating a new SSH key for GitHub..."
 
 # Generating a new SSH key
-ssh-keygen -t ed25519 -C $1 -f ~/.ssh/id_ed25519
+ssh-keygen -t ed25519 -C ${EMAIL} -f ~/.ssh/id_ed25519
 
 # Adding your SSH key to the ssh-agent
 eval "$(ssh-agent -s)"
@@ -15,4 +15,4 @@ ssh-add -K ~/.ssh/id_ed25519
 
 # Adding your SSH key to your GitHub account
 echo "Logging into GitHub CLI..."
-gh auth login --web --git-protocol ssh
+gh auth login --web --git-protocol ssh -s read:packages

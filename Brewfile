@@ -3,6 +3,8 @@ brew 'awscli'
 cask 'google-cloud-sdk'
 brew 'git'
 brew 'gh'
+brew 'go'
+brew 'docker'
 brew 'node'
 brew 'mas'
 
