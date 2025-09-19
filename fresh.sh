@@ -34,9 +34,10 @@ mkdir $HOME/Projects/Docker
 mkdir $HOME/Projects/Go
 mkdir $HOME/Projects/Web
 
-# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
+# Removes .zshrc from $HOME (if it exists) and copies the new version
 rm -rf $HOME/.zshrc
-ln -s $HOME/.dotfiles/.zshrc $HOME/.zshrc
+cp .zshrc $HOME/.zshrc
+cp Terminal/doubleend.zsh-theme $HOME/.oh-my-zsh/themes/doubleend.zsh-theme
 
 # Set macOS preferences - we will run this last because this will reload the shell
 source .macos
